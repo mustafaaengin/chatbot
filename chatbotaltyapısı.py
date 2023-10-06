@@ -11,7 +11,7 @@ def calculate_cosine_similarity(text1, text2):
     return cosine_sim[0][1]
 
 # gitden veri çekme
-url = "https://raw.githubusercontent.com/mustafaaengin/chatbot/main/Yeni%20Microsoft%20Word%20Belgesi.jsonl"
+url = "raw address of your github file"
 response = requests.get(url)
 lines = response.text.strip().split("\n")
 
@@ -41,7 +41,7 @@ while True:
 
     # benzerlik oranı %40'ın altındaysa openaia yönlendir
     if not similar_texts:
-        openai.api_key = "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"
+        openai.api_key = "apikey1"
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": user_question}]
@@ -52,7 +52,7 @@ while True:
         combined_texts = "\n".join(similar_texts)
         prompt_for_gpt = f"Soru: {user_question}\nVerilen Bilgiler: {combined_texts}\nBu bilgileri kullanarak cevap verin: "
        
-        openai.api_key = "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"
+        openai.api_key = "apikey2"
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt_for_gpt}]
