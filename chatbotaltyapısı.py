@@ -47,7 +47,7 @@ while True:
             messages=[{"role": "user", "content": user_question}]
         )
         answer = response.choices[0].message['content'].strip()
-        print(f"ChatGPT 3.5 Turbo'dan cevap: {answer}")
+        print(f"chatgp'den senin verilerini kullanmadan gelen cevap: {answer}")
     else:
         combined_texts = "\n".join(similar_texts)
         prompt_for_gpt = f"Soru: {user_question}\nVerilen Bilgiler: {combined_texts}\nBu bilgileri kullanarak cevap verin: "
@@ -58,4 +58,4 @@ while True:
             messages=[{"role": "user", "content": prompt_for_gpt}]
         )
         answer = response.choices[0].message['content'].strip()
-        print(f"ChatGPT 3.5 Turbo'dan cevap (GitHub verileri kullanılarak): {answer}")
+        print(f"chatgp'den senin verilerini kullarak gelen cevap: {answer}")
