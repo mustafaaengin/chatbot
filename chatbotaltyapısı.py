@@ -41,7 +41,7 @@ while True:
 
     # benzerlik oranı %40'ın altındaysa openaia yönlendir
     if not similar_texts:
-        openai.api_key = "apikey1"
+        openai.api_key = "yourapikey1"
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": user_question}]
@@ -52,10 +52,13 @@ while True:
         combined_texts = "\n".join(similar_texts)
         prompt_for_gpt = f"Soru: {user_question}\nVerilen Bilgiler: {combined_texts}\nBu bilgileri kullanarak cevap verin: "
        
-        openai.api_key = "apikey2"
+        openai.api_key = "yourapikey2"
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt_for_gpt}]
         )
         answer = response.choices[0].message['content'].strip()
         print(f"chatgp'den senin verilerini kullarak gelen cevap: {answer}")
+
+# Click on your profile on the Openai website. Select View API keys. Create a new secret API key.
+#Copy the resulting API key. Paste it where necessary in the code (yourapikey1 and yourapikey2)
